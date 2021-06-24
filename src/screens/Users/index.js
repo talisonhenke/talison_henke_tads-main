@@ -42,14 +42,14 @@ const Users = ({navigation}) => {
   };
 
   useEffect(() => {
-    navigation.setOptions({
-      headerLeft: false,
-      headerRight: () => <LogoutButton/>,
-      title: 'Usuários',
-      headerStyle: {backgroundColor: colors.primary},
-      headerTitleStyle: {color: colors.white},
-      headerTintColor: colors.white,
-    });
+    // navigation.setOptions({
+    //   headerLeft: false,
+    //   headerRight: () => <LogoutButton/>,
+    //   title: 'Usuários',
+    //   headerStyle: {backgroundColor: colors.primary},
+    //   headerTitleStyle: {color: colors.white},
+    //   headerTintColor: colors.white,
+    // });
     const unsubscribe = getUsers();
     //Component Didmount
     return () => {
@@ -86,7 +86,7 @@ const Users = ({navigation}) => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <MeuButton texto="Crud ervas" onClick={routeErvas} />
+      {/* <MeuButton texto="Crud ervas" onClick={routeErvas} /> */}
       {loading && <Loading/>}
       </Container>
   );

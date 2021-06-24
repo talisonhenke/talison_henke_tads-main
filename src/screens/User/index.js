@@ -5,6 +5,7 @@ import {Container, TextInput} from './styles';
 import {colors} from '../../assets/colors';
 import MeuButton from '../../components/MeuButton';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 import {ToastAndroid} from 'react-native';
 
 
@@ -21,6 +22,16 @@ const User = ({route, navigation}) => {
 
     const showToast = (message) => {
         ToastAndroid.show(message, ToastAndroid.SHORT);
+    };
+
+    const removeUser = () => {
+        firestore().collection('users').doc(uid).delete()
+        .then(() => {
+            var user = auth().uid;
+            user.delete()
+            showToast('Dados excluídos');
+        });
+        navigation.goBack();
     };
 
     const salvar = () => {
@@ -57,6 +68,7 @@ const User = ({route, navigation}) => {
             value={email}
         />
         <MeuButton texto="SALVAR" onClick={salvar}/>
+        <MeuButton texto="EXCLUIR" onClick={removeUser}/>
     </Container>
   );
 };

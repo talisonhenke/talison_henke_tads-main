@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 //screens
 import Users from '../screens/Users';
@@ -12,27 +12,42 @@ import Erva from '../screens/Erva';
 import AddErva from '../screens/AddErva';
 
 import {colors} from '../assets/colors';
+import LogoutButton from '../components/LogoutButton';
+import CustomDrawerContent from '../components/CustomDrawerContent';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const AppStack = () => {
   return (
-      <Stack.Navigator initialRouteName="Preload">
-        <Stack.Screen name="Users" component={Users} />
-        <Stack.Screen name="User" component={User} options={userStyle} />
-        <Stack.Screen name="Ervas" component={Ervas} options={ervasStyle} />
-        <Stack.Screen
+      <Drawer.Navigator 
+      initialRouteName="Preload"
+      screenOptions={{
+        headerShown: 'true',
+        headerStyle: {
+          backgroundColor: colors.primary,
+          padding: 5,
+        },
+        headerTitleStyle: {color: colors.white},
+        headerTintColor: colors.white,
+        headerRight: () => () => <LogoutButton/>,
+      }}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      >
+        <Drawer.Screen name="Users" component={Users} options={usersStyle}/>
+        <Drawer.Screen name="User" component={User} options={userStyle} />
+        <Drawer.Screen name="Ervas" component={Ervas} options={ervasStyle} />
+        <Drawer.Screen
           name="AddErva"
           component={AddErva}
           options={addErvaStyle}
         />
-        <Stack.Screen name="Erva" component={Erva} options={ervaStyle} />
-        <Stack.Screen
+        <Drawer.Screen name="Erva" component={Erva} options={ervaStyle} />
+        <Drawer.Screen
           name="Preload"
           component={Preload}
           options={preloadStyle}
         />
-    </Stack.Navigator>
+    </Drawer.Navigator>
   );
 };
 export default AppStack;
@@ -41,26 +56,17 @@ const preloadStyle = {
   headerShown: false,
 };
 const userStyle = {
+  title: 'Usuário',
+};
+const usersStyle = {
   title: 'Usuários',
-  headerStyle: {backgroundColor: colors.primary},
-  headerTitleStyle: {color: colors.white},
-  headerTintColor: colors.white,
 };
 const ervasStyle = {
   title: 'Ervas',
-  headerStyle: {backgroundColor: colors.primary},
-  headerTitleStyle: {color: colors.white},
-  headerTintColor: colors.white,
 };
 const ervaStyle = {
   title: 'Erva',
-  headerStyle: {backgroundColor: colors.primary},
-  headerTitleStyle: {color: colors.white},
-  headerTintColor: colors.white,
 };
 const addErvaStyle = {
   title: 'Adicionar Erva',
-  headerStyle: {backgroundColor: colors.primary},
-  headerTitleStyle: {color: colors.white},
-  headerTintColor: colors.white,
 };

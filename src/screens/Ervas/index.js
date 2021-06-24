@@ -136,8 +136,8 @@ const Ervas = ({navigation}) => {
         keyExtractor={item => item.id}
       />
       {loading && <Loading/>}
-      <MeuButton texto="Adicionar Erva" onClick={routeAddErva}/>
-      <MeuButton texto="Crud usuários" onClick={routeHome} />
+      {/* <MeuButton texto="Adicionar Erva" onClick={routeAddErva}/>
+      <MeuButton texto="Crud usuários" onClick={routeHome} /> */}
       </Container>
   );
 };

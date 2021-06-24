@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Container, Image} from './styles';
 import {Alert} from 'react-native';
 
@@ -8,7 +8,11 @@ import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CommonActions} from '@react-navigation/native';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+import { AuthUserContext } from '../../context/AuthUserProvider';
+
 const Preload = ({navigation}) => {
+  const {setUser} = useContext(AuthUserContext);
     const getUserCache = async ( ) => {
         try {
           const jsonValue = await AsyncStorage.getItem('user');
@@ -20,16 +24,17 @@ const Preload = ({navigation}) => {
       };
     const userLogin = async() => {
         const user = await getUserCache();
+        setUser(user);
         if (user){
             auth().signInWithEmailAndPassword(user.email, user.pass)
             .then(() => {
               navigation.dispatch(
                   CommonActions.reset({
                     index: 0,
-                    routes: [{name: 'Users'}],
+                    routes: [{name: 'Ervas'}],
                   })
                 );
-            })
+             })
             .catch((e) => {
             console.log('SignIn: erro em entrar ' + e);
               Alert.alert('Erro', 'O usuário não foi cadastrado!' + e);
@@ -47,6 +52,7 @@ const Preload = ({navigation}) => {
     };
     useEffect(() => {
         userLogin();
+        Icon.loadFont(); //Ler fonte de icons
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   return (

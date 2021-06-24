@@ -33,6 +33,7 @@ const Erva = ({route, navigation}) => {
     };
 
     const removeErva = () => {
+        console.log(uid);
         firestore().collection('ervas').doc(uid).delete()
         .then(() => {
             showToast('Dados excluídos');
