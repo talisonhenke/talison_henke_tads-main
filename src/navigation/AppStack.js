@@ -2,7 +2,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-//import {StatusBar} from 'react-native';
 
 //screens
 import Users from '../screens/Users';
@@ -18,7 +17,6 @@ const Stack = createStackNavigator();
 
 const AppStack = () => {
   return (
-      // <StatusBar backgroundColor={colors.primaryDark} />
       <Stack.Navigator initialRouteName="Preload">
         <Stack.Screen name="Users" component={Users} />
         <Stack.Screen name="User" component={User} options={userStyle} />

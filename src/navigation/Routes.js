@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
+import {useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {AuthUserContext} from '../context/AuthUserProvider';
 import auth from '@react-native-firebase/auth';

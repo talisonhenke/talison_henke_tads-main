@@ -15,7 +15,7 @@ const Preload = ({navigation}) => {
           console.log(jsonValue + " Dados em cache");
           return jsonValue != null ? JSON.parse(jsonValue) : null;
         } catch (e) {
-          console.log('Home: erro em getUserCache ' + e);
+          console.log('Users: erro em getUserCache ' + e);
         }
       };
     const userLogin = async() => {
@@ -26,7 +26,7 @@ const Preload = ({navigation}) => {
               navigation.dispatch(
                   CommonActions.reset({
                     index: 0,
-                    routes: [{name: 'Home'}],
+                    routes: [{name: 'Users'}],
                   })
                 );
             })
