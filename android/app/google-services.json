@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1021259393089",
+    "project_id": "tadsproject-358e4",
+    "storage_bucket": "tadsproject-358e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021259393089:android:b9b827644f782ad2f27ec0",
+        "android_client_info": {
+          "package_name": "com.talison_henke_tads"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021259393089-lvtol6bck3b2k47rl8bjmhgsl72qgfca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9nrMy43m10O8BVD7mtnIs46g_peNY9zM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021259393089-lvtol6bck3b2k47rl8bjmhgsl72qgfca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
