@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React, {useContext, useEffect, useState} from 'react';
 import {colors} from '../../assets/colors';
-import LogoutButton from '../../components/LogoutButton';
+import AddFloatButton from '../../components/AddFloatButton';
 import { Container, FlatList, TextInput } from './styles';
 import Item from './item';
 import firestore from '@react-native-firebase/firestore';
@@ -33,18 +33,19 @@ const Ervas = ({navigation}) => {
     );
   };
 
-  const routeHome = () => {
-    navigation.dispatch(
-      CommonActions.navigate({
-        name: 'Home',
-      }),
-    );
-  };
+  // const routeHome = () => {
+  //   navigation.dispatch(
+  //     CommonActions.navigate({
+  //       name: 'Home',
+  //     }),
+  //   );
+  // };
 
   const routeAddErva = () => {
     navigation.dispatch(
       CommonActions.navigate({
         name: 'AddErva',
+        params: {erva: null},
       }),
     );
   };
@@ -97,6 +98,7 @@ const Ervas = ({navigation}) => {
         renderItem={renderItem}
         keyExtractor={item => item.uid}
       />
+      <AddFloatButton onClick={routeAddErva}/>
       {loading && <Loading/>}
       {/* <MeuButton texto="Adicionar Erva" onClick={routeAddErva}/>
       <MeuButton texto="Crud usuários" onClick={routeHome} /> */}
