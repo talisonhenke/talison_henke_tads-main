@@ -24,6 +24,12 @@ const TextUsefulParts = styled.Text`
   color: ${colors.white};
 `;
 
+const Div = styled.View`
+  width: 100%;
+  height: 50px;
+  flex-direction: row;
+`;
+
 const Item = ({item, onPress}) => {
   return (
     <Button onPress={onPress} underlayColor="transparent">

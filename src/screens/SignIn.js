@@ -43,13 +43,13 @@ const SignIn = ({navigation}) => {
       value.pass = pass;
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem('user', jsonValue);
-      // navigation.dispatch(
-      //   CommonActions.reset({
-      //     index: 0,
-      //     routes: [{name: 'Users'}],
-      //     //params: {user: item},
-      //   })
-      // );
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{name: 'Preload'}],
+          //params: {user: item},
+        })
+      );
     } catch (e) {
       console.log('SignIn: erro em storeUserCache ' + e);
     }

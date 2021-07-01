@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Container, TextInput} from './styles';
 import {colors} from '../../assets/colors';
 import MeuButton from '../../components/MeuButton';
+import DeleteButton from '../../components/DeleteButton';
 import firestore from '@react-native-firebase/firestore';
-import {ToastAndroid} from 'react-native';
+import {Alert} from 'react-native';
 import Loading from '../../components/Loading';
-
+import { ErvasContext } from '../../context/ErvasProvider';
 
 const Erva = ({route, navigation}) => {
     const [nome, setNome] = useState('');
@@ -15,50 +16,60 @@ const Erva = ({route, navigation}) => {
     const [usefulParts, setUsefulParts] = useState('');
     const [uid, setUid] = useState('');
     const [loading, setLoading] = useState(true);
+    const {saveErva, deleteErva} = useContext(ErvasContext);
 
     useEffect(() => {
-        setNome(route.params.erva.nome);
-        setDescricao(route.params.erva.description);
-        setUsefulParts(route.params.erva.usefulParts);
-        setUid(route.params.erva.id);
+        setDescricao('');
+        setNome('');
+        setUid('');
+        setUsefulParts('');
+        if (route.params.erva){
+            setDescricao(route.params.erva.description);
+            setNome(route.params.erva.nome);
+            setUid(route.params.erva.uid);
+            setUsefulParts(route.params.erva.usefulParts);
+        }
 
-        navigation.setOptions({
-            title: route.params.erva.nome,
-          });
+        // navigation.setOptions({
+        //     title: route.params.erva.nome,
+        //   });
         setLoading(false);
-    }, []);
+    }, [route]);
 
-    const showToast = (message) => {
-        ToastAndroid.show(message, ToastAndroid.SHORT);
-    };
-
-    const removeErva = () => {
-        console.log(uid);
-        firestore().collection('ervas').doc(uid).delete()
-        .then(() => {
-            showToast('Dados excluídos');
-        });
-        navigation.goBack();
-    };
-
-    const salvar = () => {
-        firestore().collection('ervas').doc(uid).set({
-            name: nome,
-            description: descricao,
-            usefulParts: usefulParts,
-        }, { merge: true },
-        )
-        .then(() => {
-            setNome('');
-            setDescricao('');
-            setUsefulParts('');
-            setUid('');
-            showToast('Dados salvos');
+    const salvar = async () => {
+        if (nome && descricao && usefulParts){
+            let erva = {};
+            erva.uid = uid;
+            erva.name = nome;
+            erva.description = descricao;
+            erva.usefulParts = usefulParts;
+            setLoading(true);
+            await saveErva(erva);
+            setLoading(false);
             navigation.goBack();
-        })
-        .catch((e) => {
-            console.log('Erva: erro em salvar ' + e);
-        });
+        }
+        else
+        {
+            Alert.alert('Atenção', 'Digite todos os campos');
+        }
+    };
+    const excluir = async () => {
+        Alert.alert('Atenção', 'Você tem certeza que deseja excluir esse registro?', [
+            {
+              text: 'Não',
+              onPress: () => {},
+              styles: 'cancel',
+            },
+            {
+              text: 'Sim',
+              onPress: async () => {
+                setLoading(true);
+                await deleteErva(uid);
+                setLoading(false);
+                navigation.goBack();
+              },
+            },
+          ]);
     };
 
   return (
@@ -83,7 +94,7 @@ const Erva = ({route, navigation}) => {
             value={usefulParts}
         />
         <MeuButton texto="SALVAR" onClick={salvar}/>
-        <MeuButton texto="EXCLUIR" onClick={removeErva}/>
+        {uid ? <DeleteButton texto="EXCLUIR" onClick={excluir}/> : null}
         {loading && <Loading/>}
     </Container>
   );

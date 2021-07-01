@@ -29,7 +29,7 @@ const AppStack = () => {
         },
         headerTitleStyle: {color: colors.white},
         headerTintColor: colors.white,
-        headerRight: () => () => <LogoutButton/>,
+        headerRight: () => <LogoutButton/>,
       }}
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       >
