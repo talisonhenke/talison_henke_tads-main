@@ -66,15 +66,15 @@ const CustomDrawerContent = ({navigation}) => {
             </ItemMenuText>
           </DivItem>
           <DivItem>
-          <Icon name="leaf-outline" size={25} color={colors.primaryDark} />
-            <ItemMenuText onPress={() => {navigation.navigate('Ervas');}} >
-              Ervas
+            <Icon name="people-circle-outline" size={25} color={colors.primaryDark} />
+            <ItemMenuText onPress={() => {navigation.navigate('Sellers');}} >
+              Vendedores
             </ItemMenuText>
           </DivItem>
           <DivItem>
-          <Icon name="add-outline" size={25} color={colors.primaryDark} />
-            <ItemMenuText onPress={() => {navigation.navigate('AddErva');}} >
-              Adicionar Ervas
+          <Icon name="leaf-outline" size={25} color={colors.primaryDark} />
+            <ItemMenuText onPress={() => {navigation.navigate('Ervas');}} >
+              Ervas
             </ItemMenuText>
           </DivItem>
           <DivItem>

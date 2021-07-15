@@ -1209,6 +1209,14 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-10.4.0.tgz#83d7bb13404d4266f2cad6bf5a0ad889805bd608"
   integrity sha512-y9F2mJVfbLUDxGZ/HdmY95wDuHNJb7aGcFSb8HuJaXNWXrF28ebeI1AhAM4FICWGunrzYIDl7UXYyeONl+aitg==
 
+"@react-navigation/bottom-tabs@^5.11.11":
+  version "5.11.11"
+  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.11.11.tgz#ad4dfee4316522d8c05b5a8ad460f597bddb9e3c"
+  integrity sha512-hThj6Vfw+ITzAVj5TgLEoxkVEcBD+gYeieWOe6FryBRgokgKNCzFQzqArJ5UCmNMxklNH0rstJfcdyHflLuPtw==
+  dependencies:
+    color "^3.1.3"
+    react-native-iphone-x-helper "^1.3.0"
+
 "@react-navigation/core@^5.14.4":
   version "5.14.4"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.14.4.tgz#f63a2cd214bddbd25e1181f9335c32dfc3b6460f"

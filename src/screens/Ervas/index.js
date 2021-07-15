@@ -3,9 +3,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {colors} from '../../assets/colors';
 import AddFloatButton from '../../components/AddFloatButton';
-import { Container, FlatList, TextInput } from './styles';
+import { Container, FlatList, TextInput, ScrollView } from './styles';
 import Item from './item';
-import firestore from '@react-native-firebase/firestore';
 import { CommonActions } from '@react-navigation/native';
 import Loading from '../../components/Loading';
 
@@ -44,7 +43,7 @@ const Ervas = ({navigation}) => {
   const routeAddErva = () => {
     navigation.dispatch(
       CommonActions.navigate({
-        name: 'AddErva',
+        name: 'Erva',
         params: {erva: null},
       }),
     );

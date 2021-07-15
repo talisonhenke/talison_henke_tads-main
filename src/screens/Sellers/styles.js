@@ -3,18 +3,20 @@ import styled from 'styled-components/native';
 import {colors} from '../../assets/colors';
 
 export const Container = styled.SafeAreaView`
-  flex: 1;
+  position: absolute;
   align-items: center;
   justify-content: center;
   background-color: ${colors.white};
+  width: 100%;
+  height: 100%;
 `;
 
-export const TextInput = styled.TextInput`
+export const Text = styled.Text`
+  font-size: 14px;
+  align-items: center;
+`;
+
+export const FlatList = styled.FlatList`
   width: 95%;
-  height: 50px;
-  border-bottom-color: ${colors.grey};
-  border-bottom-width: 2px;
-  font-size: 16px;
-  padding-left: 2px;
-  padding-bottom: 15px;
+  height: 100%;
 `;

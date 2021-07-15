@@ -9,7 +9,7 @@ import Preload from '../screens/Preload';
 import User from '../screens/User';
 import Ervas from '../screens/Ervas';
 import Erva from '../screens/Erva';
-import AddErva from '../screens/AddErva';
+import Sellers from '../screens/Sellers';
 
 import {colors} from '../assets/colors';
 import LogoutButton from '../components/LogoutButton';
@@ -35,12 +35,8 @@ const AppStack = () => {
       >
         <Drawer.Screen name="Users" component={Users} options={usersStyle}/>
         <Drawer.Screen name="User" component={User} options={userStyle} />
+        <Drawer.Screen name="Sellers" component={Sellers} options={sellersStyle} />
         <Drawer.Screen name="Ervas" component={Ervas} options={ervasStyle} />
-        <Drawer.Screen
-          name="AddErva"
-          component={AddErva}
-          options={addErvaStyle}
-        />
         <Drawer.Screen name="Erva" component={Erva} options={ervaStyle} />
         <Drawer.Screen
           name="Preload"
@@ -61,12 +57,12 @@ const userStyle = {
 const usersStyle = {
   title: 'Usuários',
 };
+const sellersStyle = {
+  title: 'Vendedores',
+};
 const ervasStyle = {
   title: 'Ervas',
 };
 const ervaStyle = {
   title: 'Erva',
-};
-const addErvaStyle = {
-  title: 'Adicionar Erva',
 };
