@@ -4,12 +4,13 @@ import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 //screens
-import Users from '../screens/Users';
 import Preload from '../screens/Preload';
+import Users from '../screens/Users';
 import User from '../screens/User';
 import Ervas from '../screens/Ervas';
 import Erva from '../screens/Erva';
 import Sellers from '../screens/Sellers';
+import Seller from '../screens/Seller';
 
 import {colors} from '../assets/colors';
 import LogoutButton from '../components/LogoutButton';
@@ -36,6 +37,7 @@ const AppStack = () => {
         <Drawer.Screen name="Users" component={Users} options={usersStyle}/>
         <Drawer.Screen name="User" component={User} options={userStyle} />
         <Drawer.Screen name="Sellers" component={Sellers} options={sellersStyle} />
+        <Drawer.Screen name="Seller" component={Seller} options={sellerStyle} />
         <Drawer.Screen name="Ervas" component={Ervas} options={ervasStyle} />
         <Drawer.Screen name="Erva" component={Erva} options={ervaStyle} />
         <Drawer.Screen
@@ -59,6 +61,9 @@ const usersStyle = {
 };
 const sellersStyle = {
   title: 'Vendedores',
+};
+const sellerStyle = {
+  title: 'Vendedor',
 };
 const ervasStyle = {
   title: 'Ervas',

@@ -55,14 +55,14 @@ const Ervas = ({navigation}) => {
 
   const findByName = (value) => {
     if (value !== '') {
-      let ervas = [];
+      let ervasArray = [];
       data.forEach((o) => {
         if (o.nome.toLowerCase().includes(value.toLowerCase())) {
-          ervas.push(o);
+          ervasArray.push(o);
         }
       });
-      if (ervas.length > 0) {
-        setDataTemp(ervas);
+      if (ervasArray.length > 0) {
+        setDataTemp(ervasArray);
       } else {
         //Alert.alert('Atenção', 'Nenhum usuário encontrado.');
         setDataTemp([]);

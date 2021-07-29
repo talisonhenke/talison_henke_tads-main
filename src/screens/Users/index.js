@@ -36,7 +36,7 @@ const Users = ({navigation}) => {
       setLoading(false);
     },
     (e) => {
-      console.log('Home: erro em getUsers ' + e);
+      console.log('Users: erro em getUsers ' + e);
     } );
     return unsubscribe;
   };

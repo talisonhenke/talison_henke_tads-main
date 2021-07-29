@@ -7,43 +7,47 @@ import MeuButton from '../../components/MeuButton';
 import DeleteButton from '../../components/DeleteButton';
 import {Alert} from 'react-native';
 import Loading from '../../components/Loading';
-import { ErvasContext } from '../../context/ErvasProvider';
+import { SellersContext } from '../../context/SellersProvider';
 
-const Erva = ({route, navigation}) => {
+const Seller = ({route, navigation}) => {
     const [nome, setNome] = useState('');
-    const [descricao, setDescricao] = useState('');
-    const [usefulParts, setUsefulParts] = useState('');
+    const [email, setEmail] = useState('');
+    const [storeName, setStoreName] = useState('');
+    const [storeLocation, setStoreLocation] = useState('');
     const [uid, setUid] = useState('');
     const [loading, setLoading] = useState(true);
-    const {saveErva, deleteErva} = useContext(ErvasContext);
+    const {saveSeller, deleteSeller} = useContext(SellersContext);
 
     useEffect(() => {
-        setDescricao('');
         setNome('');
+        setEmail('');
+        setStoreName('');
+        setStoreLocation('');
         setUid('');
-        setUsefulParts('');
-        if (route.params.erva){
-            setDescricao(route.params.erva.description);
-            setNome(route.params.erva.nome);
-            setUid(route.params.erva.uid);
-            setUsefulParts(route.params.erva.usefulParts);
+        if (route.params.seller){
+            setNome(route.params.seller.nome);
+            setEmail(route.params.seller.email);
+            setStoreName(route.params.seller.storeName);
+            setStoreLocation(route.params.seller.storeLocation);
+            setUid(route.params.seller.uid);
         }
 
         // navigation.setOptions({
-        //     title: route.params.erva.nome,
+        //     title: route.params.seller.nome,
         //   });
         setLoading(false);
     }, [route]);
 
     const salvar = async () => {
-        if (nome && descricao && usefulParts){
-            let erva = {};
-            erva.uid = uid;
-            erva.name = nome;
-            erva.description = descricao;
-            erva.usefulParts = usefulParts;
+        if (nome && email && storeName && storeLocation){
+            let seller = {};
+            seller.uid = uid;
+            seller.name = nome;
+            seller.email = email;
+            seller.storeName = storeName;
+            seller.storeLocation = storeLocation;
             setLoading(true);
-            await saveErva(erva);
+            await saveSeller(seller);
             setLoading(false);
             navigation.goBack();
         }
@@ -63,7 +67,7 @@ const Erva = ({route, navigation}) => {
               text: 'Sim',
               onPress: async () => {
                 setLoading(true);
-                await deleteErva(uid);
+                await deleteSeller(uid);
                 setLoading(false);
                 navigation.goBack();
               },
@@ -74,23 +78,30 @@ const Erva = ({route, navigation}) => {
   return (
     <Container>
         <TextInput
-            placeholder="Nome da erva"
+            placeholder="Nome do vendedor"
             placeholderTextColor={colors.grey}
             keyboardType="default"
             onChangeText={(t) => setNome(t)}
             value={nome}
         />
         <TextInput
-            placeholder="Descricão"
+            placeholder="Nome da loja"
             keyboardType="default"
-            onChangeText={(t) => setDescricao(t)}
-            value={descricao}
+            onChangeText={(t) => setStoreName(t)}
+            value={storeName}
         />
         <TextInput
-            placeholder="Parte utilizada"
+            placeholder="Localização"
             keyboardType="default"
-            onChangeText={(t) => setUsefulParts(t)}
-            value={usefulParts}
+            onChangeText={(t) => setStoreLocation(t)}
+            value={storeLocation}
+        />
+        <TextInput
+            editable = "false"
+            placeholder="Email"
+            keyboardType="default"
+            onChangeText={(t) => setEmail(t)}
+            value={email}
         />
         <MeuButton texto="SALVAR" onClick={salvar}/>
         {uid ? <DeleteButton texto="EXCLUIR" onClick={excluir}/> : null}
@@ -99,4 +110,4 @@ const Erva = ({route, navigation}) => {
   );
 };
 
-export default Erva;
+export default Seller;

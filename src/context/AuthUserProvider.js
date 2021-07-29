@@ -18,11 +18,11 @@ export const AuthUserProvider = ({children}) => {
         auth().signOut()
         .then(() => {})
         .catch((e) => {
-            console.log('LogoutButton: erro rm signOut ' + e);
+            console.log('LogoutButton: erro em signOut ' + e);
         });
     })
     .catch((e) => {
-        console.log('LogoutButton: erro rm remove item signOut ' + e);
+        console.log('LogoutButton: erro em remove item signOut ' + e);
     });
   };
 
