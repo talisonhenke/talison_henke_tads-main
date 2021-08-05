@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect, useContext } from 'react';
-// import {Container, Text} from './styles';
 import { View, StyleSheet, Alert } from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import { SellersContext } from '../../context/SellersProvider';
@@ -29,7 +28,7 @@ const MapSellersTab = () => {
   }, [sellers]);
 
   return (
-   <View style={StyleSheet.container}>
+   <View style={styles.container}>
       <MapView
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         ref={(map) => (this.map = map)}
@@ -81,4 +80,8 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
+  image: {
+    height: 15,
+    width: 15,
+  }
 });
