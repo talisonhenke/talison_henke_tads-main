@@ -16,6 +16,18 @@ export const Text = styled.Text`
   align-items: center;
 `;
 
+export const TextInput = styled.TextInput`
+  width: 95%;
+  border-color: ${colors.grey};
+  border-width: 2px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 2px;
+  padding-bottom: 15px;
+  text-align: center;
+`;
+
 export const FlatList = styled.FlatList`
   width: 95%;
   height: 100%;

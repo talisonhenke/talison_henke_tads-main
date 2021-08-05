@@ -97,7 +97,6 @@ const Seller = ({route, navigation}) => {
             value={storeLocation}
         />
         <TextInput
-            editable = "false"
             placeholder="Email"
             keyboardType="default"
             onChangeText={(t) => setEmail(t)}

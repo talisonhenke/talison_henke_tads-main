@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 import React, {useContext, useEffect} from 'react';
 import {Container, Image} from './styles';
@@ -11,10 +12,12 @@ import { CommonActions} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AuthUserContext } from '../../context/AuthUserProvider';
 import {ErvasContext} from '../../context/ErvasProvider';
+import { SellersContext } from '../../context/SellersProvider';
 
 const Preload = ({navigation}) => {
   const {setUser} = useContext(AuthUserContext);
   const {getErvas} = useContext(ErvasContext);
+  const {getSellers} = useContext(SellersContext);
     const getUserCache = async ( ) => {
         try {
           const jsonValue = await AsyncStorage.getItem('user');
@@ -55,11 +58,12 @@ const Preload = ({navigation}) => {
     useEffect(() => {
         userLogin();
         Icon.loadFont(); //Ler fonte de icons
-    // eslint-disable-next-line react-hooks/exhaustive-deps
         const unsubscribeErvas = getErvas(); // cache das ervas
+        const unsubscribeSellers = getSellers(); // cache dos vendedores
 
         return (() => {
           unsubscribeErvas;
+          unsubscribeSellers;
         });
     }, []);
   return (

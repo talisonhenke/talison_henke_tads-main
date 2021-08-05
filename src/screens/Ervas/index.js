@@ -19,6 +19,7 @@ const Ervas = ({navigation}) => {
   const {ervas} = useContext(ErvasContext);
 
   useEffect(() => {
+    console.log(ervas + ' ervas');
     setData(ervas);
     setLoading(false);
   }, [ervas]);

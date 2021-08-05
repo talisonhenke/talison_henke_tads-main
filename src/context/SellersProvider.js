@@ -23,16 +23,17 @@ export const SellersProvider = ({children}) => {
               uid: doc.id,
               nome: doc.data().name,
               email: doc.data().email,
+              latitude: doc.data().latitude,
+              longitude: doc.data().longitude,
               storeName: doc.data().storeName,
-              storeLocation: doc.data().storeLocation,
+              // storeLocation: doc.data().storeLocation,
             };
             d.push(val);
           });
-          //console.log(d);
           setSellers(d);
         },
         (e) => {
-          console.log('SellersProvider: erro em getUsers ' + e);
+          console.log('SellersProvider: erro em getSellers ' + e);
         },
       );
     return unsubscribe;
@@ -46,7 +47,9 @@ export const SellersProvider = ({children}) => {
     await firestore().collection('sellers').doc(val.uid).set({
       name: val.name,
       storeName: val.storeName,
-      storeLocation: val.storeLocation,
+      latitude: val.latitude,
+      longitude: val.longitude,
+      // storeLocation: val.storeLocation,
     },
     {merge:true},)
   .then(() => {

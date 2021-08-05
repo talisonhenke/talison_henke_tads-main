@@ -3,7 +3,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {colors} from '../../assets/colors';
 import AddFloatButton from '../../components/AddFloatButton';
-import { Container, FlatList, TextInput, ScrollView } from './styles';
+import { Container, FlatList, TextInput } from './styles';
 import Item from './item';
 import { CommonActions } from '@react-navigation/native';
 import Loading from '../../components/Loading';
@@ -18,6 +18,7 @@ const SellersTab = ({navigation}) => {
   const {sellers} = useContext(SellersContext);
 
   useEffect(() => {
+    // console.log(sellers + ' vendedores');
     setData(sellers);
     setLoading(false);
   }, [sellers]);
@@ -69,29 +70,27 @@ const SellersTab = ({navigation}) => {
       setDataTemp([]);
     }
   };
-  return (
-      <Container>
-        <TextInput
-          placeholder="Buscar vendedor"
-          placeholderTextColor={colors.grey}
-          keyboardType="default"
-          // onSubmitEditing={(e) => findByName(e.nativeEvent.text)}
-          onChangeText={(t) => {
-            resetSwipeListView(t);
-            findByName(t);
-            console.log(t);
-        }}
-      />
-      <FlatList
-        data={dataTemp.length === 0 ? data : dataTemp}
-        renderItem={renderItem}
-        keyExtractor={item => item.uid}
-      />
-      <AddFloatButton onClick={routeAddSeller}/>
-      {loading && <Loading/>}
-      {/* <MeuButton texto="Adicionar Seller" onClick={routeAddSeller}/>
-      <MeuButton texto="Crud usuários" onClick={routeHome} /> */}
-      </Container>
-  );
+    return (
+        <Container>
+          <TextInput
+            placeholder="Buscar vendedor"
+            placeholderTextColor={colors.grey}
+            keyboardType="default"
+            // onSubmitEditing={(e) => findByName(e.nativeEvent.text)}
+            onChangeText={(t) => {
+              resetSwipeListView(t);
+              findByName(t);
+              console.log(t);
+          }}
+        />
+        <FlatList
+          data={dataTemp.length === 0 ? data : dataTemp}
+          renderItem={renderItem}
+          keyExtractor={item => item.uid}
+        />
+        <AddFloatButton onClick={routeAddSeller}/>
+        {loading && <Loading/>}
+        </Container>
+    );
 };
 export default SellersTab;

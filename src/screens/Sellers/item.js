@@ -20,12 +20,23 @@ const TextEmail = styled.Text`
   color: ${colors.white};
 `;
 
+const StoreName = styled.Text`
+  font-size: 16px;
+  color: ${colors.white};
+`;
+
+const StoreLocation = styled.Text`
+  font-size: 16px;
+  color: ${colors.white};
+`;
 const Item = ({item, onPress}) => {
   return (
     <Button onPress={onPress} underlayColor="transparent">
       <>
         <TextName>{item.nome}</TextName>
         <TextEmail>{item.email}</TextEmail>
+        <StoreName>{item.storeName}</StoreName>
+        <StoreLocation>{item.storeLocation}</StoreLocation>
       </>
     </Button>
   );

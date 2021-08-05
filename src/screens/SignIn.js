@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import MeuButton from '../components/MeuButton';
 import {colors} from '../assets/colors';
-import { CommonActions, getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 //firebase
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';

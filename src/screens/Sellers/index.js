@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+/*eslint-disable prettier/prettier */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SellersTab from './SellersTab';
